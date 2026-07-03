@@ -79,7 +79,7 @@
   .tech-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;position:relative;z-index:2;
              font-family:var(--sans);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
   .tech-head .th-r{text-align:right;line-height:1.6;white-space:nowrap}
-  .hero .lead{position:relative;z-index:2;margin:20px 0 0 auto;max-width:42ch;font-size:12px;line-height:1.65;letter-spacing:.005em;color:#1a1a1a;text-align:justify}
+  .hero .lead{position:relative;z-index:2;margin:20px 0 0;max-width:none;font-size:12px;line-height:1.65;letter-spacing:.005em;color:#1a1a1a;text-align:left}
   .hero h1{position:relative;z-index:2;margin-top:26px;font-family:var(--display);font-weight:700;
            font-size:clamp(40px,12vw,96px);line-height:.92;letter-spacing:-.02em;text-transform:uppercase}
   .hero h1 .reg{font-family:var(--mono);font-size:.14em;vertical-align:top;font-weight:600;letter-spacing:0}
@@ -152,7 +152,7 @@
   .task .sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--grey);margin:7px 0 13px;padding-left:22px;text-transform:uppercase;max-width:58ch;line-height:1.6}
   .ctrl{padding-left:22px}
   .stars{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
-  .star{appearance:none;border:none;background:none;cursor:pointer;font-size:28px;line-height:1;color:transparent;-webkit-text-stroke:1.2px var(--ink);padding:0;transition:transform .08s,color .08s}
+  .star{appearance:none;border:none;background:none;cursor:pointer;font-size:28px;line-height:1;color:transparent;-webkit-text-stroke:1.2px var(--ink);padding:0;transition:transform .08s,color .08s;font-family:serif}
   .star::before{content:"\2605"}
   .star:hover{transform:translateY(-2px) scale(1.1)}
   .star.on{color:var(--pink);-webkit-text-stroke:1.2px var(--pink)}
@@ -196,7 +196,7 @@
   .bar .prog{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)}
   .bar .prog b{color:var(--ink)}
   .btn{font-family:var(--mono);cursor:pointer;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-       color:#fff;background:var(--pink);border:1px solid var(--pink);padding:11px 20px;transition:background .12s,color .12s,transform .06s}
+       color:#fff;background:#555;border:1px solid #555;padding:11px 20px;transition:background .12s,color .12s,transform .06s}
   .btn:hover{background:var(--hl);color:#fff}
   .btn:active{transform:translateY(1px)}
   .btn[disabled]{opacity:.3;cursor:not-allowed;pointer-events:none}
@@ -301,7 +301,10 @@
   .intro-slide .so-fn{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin:16px 0 10px;font-weight:400}
   .intro-slide ol{padding:0;margin:0 0 10px;counter-reset:step}
   .intro-slide ol li{list-style:none;counter-increment:step;display:flex;gap:12px;margin-bottom:11px;font-size:14px;line-height:1.5;color:#1a1a1a}
-  .intro-slide ol li::before{content:counter(step,decimal-leading-zero);flex-shrink:0;font-family:var(--mono);font-size:10px;background:var(--ink);color:var(--paper);padding:3px 6px;margin-top:2px}
+  .intro-slide ol li::before{content:counter(step,decimal-leading-zero);flex-shrink:0;font-family:var(--mono);font-size:10px;color:var(--grey);padding-top:3px;margin-top:2px}
+  .gate-steps{counter-reset:step;padding:0;margin:20px 0 0;list-style:none;position:relative;z-index:2}
+  .gate-steps li{counter-increment:step;display:flex;gap:10px;margin-bottom:10px;font-size:12px;line-height:1.6;color:#1a1a1a}
+  .gate-steps li::before{content:counter(step,decimal-leading-zero);flex-shrink:0;font-family:var(--mono);font-size:10px;color:var(--grey);padding-top:3px}
   .intro-slide .note{font-size:12px;color:#888;margin-top:4px}
   .intro-foot{display:flex;align-items:center;justify-content:space-between;margin-top:18px;flex-shrink:0}
   .intro-dots{display:flex;gap:6px}
@@ -395,23 +398,17 @@
       <div class="m-r">DATENERHEBUNG / NR <b id="mNr">—</b></div>
     </div>
     <div class="hl-strip"><div class="run" id="run"></div></div>
-    <div class="steps">
-      <div id="st-0" class="on">00 · Nummer</div>
-      <div id="st-1">01 · Aufgaben</div>
-      <div id="st-2">02 · Angaben</div>
-    </div>
 
     <!-- GATE -->
     <section class="screen active" id="scr-gate">
       <div class="hero">
-        <div class="tech-head"><span></span><span class="th-r">EU · Anonym<br>System No. YR-2026</span></div>
         <p class="lead">Gib deine persönliche, vierstellige Teilnehmer*innen-Nummer ein, die dir zu Beginn des Workshops zugeteilt wurde. Alle Angaben werden anonym und ausschließlich mit dieser Nummer gespeichert.</p>
         <h1>Yourope<span class="reg">★</span></h1>
       </div>
       <div class="gate-box">
-        <div class="lab">Teilnehmer*innen-Nummer · 4 Ziffern</div>
+        <div class="lab">Teilnehmer*innen-Nummer</div>
         <input id="nrInput" type="text" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="0000">
-        <div class="hint" id="nrHint">Genau 4 Ziffern eingeben.</div>
+        <div class="hint" id="nrHint"></div>
       </div>
       <div style="display:flex;justify-content:center;padding:32px 0 40px">
         <div class="star-ring" id="gateRing" style="width:172px;height:172px"></div>
@@ -421,7 +418,6 @@
     <!-- PART 2 = AUFGABEN (jetzt zuerst) -->
     <section class="screen" id="scr-part2">
       <div class="hero">
-        <div class="tech-head"><span>Teil 01 / 02</span><span class="th-r">Aufgaben<br>12 Werte</span></div>
         <h1>Ergebnisse</h1>
       </div>
       <div class="task-nav" id="taskNav"></div>
@@ -437,8 +433,8 @@
         <div class="danke-stars" id="dankeStars">
           <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
         </div>
-        <p style="margin-top:28px;max-width:38ch;font-size:14px;line-height:1.6;color:#444">Das Ergebnis basiert <b>ausschließlich auf deinen Aufgabenergebnissen</b> — nicht auf deinen persönlichen Angaben oder finanziellen Informationen.</p>
         <button class="btn" id="toProfile" style="margin-top:24px;opacity:0;transition:opacity .6s" disabled>Ergebnis anzeigen →</button>
+        <p style="margin-top:20px;max-width:38ch;font-size:12px;line-height:1.6;color:#888">Das Ergebnis basiert ausschließlich auf deinen Aufgabenergebnissen — nicht auf deinen persönlichen Angaben oder finanziellen Informationen.</p>
       </div>
     </section>
 
@@ -622,21 +618,21 @@
     2:{type:'stars',max:12,q:'Wie viele Sterne hast du ausgemalt?',sub:''},
     3:{type:'number',min:1,invert:true,max:7,unit:'von 7',q:'Welche Nummer hat dein Meme?',sub:'Nummer eintragen · 1–7'},
     4:{type:'number',min:1,max:7,unit:'von 7',q:'Auf welchem Feld bist du gelandet?',sub:'Feldnummer eintragen · 1–7'},
-    5:{type:'colorcount',q:'Wie viele Sterne hast du pro Farbe gesetzt?',sub:'Blau = 1× gewesen · Gelb = 2–3× · Rot = 4×+',colors:['gruen','gelb','rot'],weights:[1,2,3],maxEach:3},
-    6:{type:'number',max:28,unit:'von 28',q:'Wie viele Felder hast du ausgemalt?',sub:'Anzahl eintragen · 0–28'},
+    5:{type:'colorcount',q:'Wie viele Sterne hast du pro Farbe gesetzt?',sub:'Blau = 1× gewesen · Gelb = 2–3× · Rot = 4×+',colors:['gruen','gelb','rot'],weights:[1,2,4],maxEach:20},
+    6:{type:'number',max:28,unit:'von 28',q:'Wie viele Blumenblätter hast du ausgemalt?',sub:'Anzahl eintragen · 0–28'},
     7:{type:'number',invert:true,max:90,unit:'Grad',q:'Wie viele Grad zeigt die Wasserwaage?',sub:'Abweichung eintragen · 0–90'},
     8:{type:'coord',xLabels:['A','B','C','D','E','F','G','H'],yLabels:[1,2,3,4,5,6,7,8],
       q:'Wo hast du dein Kreuz gesetzt?',
       sub:'Spalte (A–H) und Zeile (1–8) eintragen'},
-    9:{type:'number',max:24,unit:'von 24',q:'Wie viele hast du richtig verbunden?',sub:'Anzahl eintragen · 0–24'},
-    10:{type:'number',max:27,unit:'von 27',q:'Wie viele hast du erkannt?',sub:'Mitglieder der Europäischen Kommission — Anzahl eintragen · 0–27'},
-    11:{type:'number',invert:true,max:50,unit:'von 50',q:'Wie viele hast du dir genommen?',sub:'Genommene Artikel eintragen · 0–50'},
+    9:{type:'number',max:24,unit:'von 24',q:'Wie viele hast du richtig erkannt?',sub:'Anzahl eintragen · 0–24'},
+    10:{type:'number',max:27,unit:'von 27',q:'Wie viele hast du schon einmal gesehen oder von ihnen gehört?',sub:'Mitglieder der Europäischen Kommission — Anzahl eintragen · 0–27'},
+    11:{type:'number',invert:true,max:50,unit:'von 50',q:'Wie viele Grundgesetze hast du dir genommen?',sub:'Genommene Artikel eintragen · 0–50'},
     12:{type:'coord',scoreMode:'sum',maxX:5,maxY:5,
       xLabels:[0,1,2,3,4,5],yLabels:[0,1,2,3,4,5],
-      xPlaceholder:'X – Ich darf … an Wahlen teilnehmen',yPlaceholder:'Y – Ich möchte … an Wahlen teilnehmen',
+      xPlaceholder:'→ X · Ich darf … an Wahlen teilnehmen',yPlaceholder:'↑ Y · Ich möchte … an Wahlen teilnehmen',
       xDesc:['0 – ich darf kaum','1','2','3','4','5 – ich darf sehr viel'],
       yDesc:['0 – ich möchte kaum','1','2','3','4','5 – ich möchte sehr viel'],
-      q:'Wo hast du dein Kreuz gesetzt?',sub:'X (darf) und Y (möchte) eintragen · je 0–5'},
+      q:'Wo hast du dein Kreuz gesetzt?',sub:'X-Achse (waagrecht) = darf · Y-Achse (senkrecht) = möchte · je 0–5'},
   };
   const DIMS=[
     {code:'D1',name:'Zugehörigkeit',key:'zugehoerigkeit',tasks:[1,2,3]},
@@ -660,8 +656,7 @@
     if(name==='part2'){$('#aufgabenIntro').classList.add('show');}
     if(name==='danke'){const sp=$('#dankeStars');if(sp)sp.querySelectorAll('span').forEach(s=>s.classList.remove('lit'));}
     if(name==='part1'){const el=$('#nr-p1b');if(el)el.innerHTML='Angaben<br>11 Fragen<br>NR. '+escapeHTML(nr);}}
-  function updateSteps(){const idx={gate:0,part2:1,danke:1,part1:2}[current];
-    [0,1,2].forEach(i=>{const e=$('#st-'+i);e.classList.remove('on','done');if(i<idx)e.classList.add('done');if(i===idx)e.classList.add('on');});}
+  function updateSteps(){}
 
   /* ---------- bar ---------- */
   const prog=$('#prog'),nextBtn=$('#nextBtn'),bar=$('#bar');
@@ -760,9 +755,18 @@
           const yOpts=t.yLabels.map((l)=>'<option value="'+l+'">'+l+'</option>').join('');
           const xLbl=t.xPlaceholder||'Spalte';
           const yLbl=t.yPlaceholder||'Zeile';
+          const coordSVG=t.scoreMode?'<svg width="64" height="64" viewBox="0 0 64 64" style="flex-shrink:0;align-self:flex-end;margin-bottom:6px" xmlns="http://www.w3.org/2000/svg">'+
+            '<line x1="10" y1="54" x2="10" y2="10" stroke="currentColor" stroke-width="1.5"/>'+
+            '<polygon points="10,6 7,14 13,14" fill="currentColor"/>'+
+            '<line x1="10" y1="54" x2="58" y2="54" stroke="currentColor" stroke-width="1.5"/>'+
+            '<polygon points="62,54 54,51 54,57" fill="currentColor"/>'+
+            '<text x="34" y="62" font-size="9" font-family="monospace" fill="currentColor" text-anchor="middle">X</text>'+
+            '<text x="4" y="32" font-size="9" font-family="monospace" fill="currentColor" text-anchor="middle">Y</text>'+
+            '</svg>':'';
           ctrl='<div class="coordwrap">'+
                '<label class="coord-label">'+xLbl+'<select class="text-in" data-task="'+no+'" data-axis="x"><option value="" disabled selected>–</option>'+xOpts+'</select></label>'+
                '<label class="coord-label">'+yLbl+'<select class="text-in" data-task="'+no+'" data-axis="y"><option value="" disabled selected>–</option>'+yOpts+'</select></label>'+
+               coordSVG+
                '</div>';
         }
         else if(t.type==='colorcount'){
@@ -827,7 +831,7 @@ for(let i=1;i<=12;i++)h+='<a href="#" data-task="'+i+'" id="tn-'+i+'"><svg class
       const idx=t.xLabels.indexOf(raw.x);if(idx<0)return 0;
       const v=t.xLabels.length-idx;return v/t.xLabels.length*10;
     }
-    if(t.type==='colorcount'){if(!raw)return 0;const s=t.colors.reduce((a,c,i)=>a+(Math.min(Number(raw[c])||0,t.maxEach)*t.weights[i]),0);const mx=t.colors.reduce((a,_,i)=>a+t.maxEach*t.weights[i],0);return s/mx*10;}
+    if(t.type==='colorcount'){if(!raw)return 0;const R=t.colors.reduce((a,c,i)=>a+(Number(raw[c])||0)*t.weights[i],0);return 10*(1-Math.exp(-R/28));}
     if(raw===''||raw===undefined||raw===null||isNaN(Number(raw)))return 0;
     const v=Math.max(0,Math.min(Number(raw),t.max));
     return (t.invert?(t.max-v):v)/t.max*10;}
