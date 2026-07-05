@@ -290,6 +290,8 @@
     .task-nav a .tn-num{font-size:10px}
     .task-nav a.done .tn-star{font-size:14px}
     .task-nav a.done .tn-num{font-size:7px}
+    /* Überschriften auf Handy-Breite gleich groß wie auf der Stats-Seite (--h-size dort) */
+    .hero h1,.thanks h1,.q-text,.task .q{font-size:clamp(24px,5.4vw,34px)}
   }
   @media print{
     @page{size:10.2cm 15.2cm;margin:0}
@@ -346,10 +348,10 @@
 
   #scr-danke.active{display:flex;flex-direction:column;min-height:calc(100vh - 130px)}
   .thanks{flex:1;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;min-height:auto}
-  .thanks .thanks-sub{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--ink);margin:0 auto 16px;text-transform:none}
+  .thanks .thanks-sub{font-family:var(--mono);font-size:14px;letter-spacing:.05em;color:var(--ink);margin:0 auto 16px;text-transform:none}
   .star-ring{margin-left:auto;margin-right:auto}
   .danke-stars{justify-content:center}
-  .thanks-note{padding:16px 16px 32px;max-width:44ch;font-size:12px;line-height:1.6;color:var(--ink);text-align:left;text-transform:none;font-family:var(--mono)}
+  .thanks-note{padding:16px 16px 32px;max-width:none;font-size:14px;line-height:1.6;color:var(--ink);text-align:left;text-transform:none;font-family:var(--mono)}
 
   /* Mono: never caps */
   .topbar,.topbar .m-r,.hl-strip .run,.steps div,
@@ -982,7 +984,7 @@ for(let i=1;i<=12;i++)h+='<a href="#" data-task="'+i+'" id="tn-'+i+'"><span clas
     return r;}
 
   /* ---------- Google Sheets URL — hier eintragen ---------- */
-  const SHEETS_URL='https://script.google.com/macros/s/AKfycbzkjIWGXAL51Xbb3lYw6egj68X_IpGYQWkNzWo5SmZ3n0hC9WYTBaXNcqfPb_HrFtm1/exec';
+  const SHEETS_URL='https://script.google.com/macros/s/AKfycbyHAYgII0yP0igRNgflyHGbdNR0J1EE67iiHLzNRk5LFL87iOOwwUqvqqvTvl6FUzqy/exec';
 
   /* ---------- session persistence ---------- */
   function persistSession(){
