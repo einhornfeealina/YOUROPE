@@ -346,17 +346,16 @@
 
   #scr-danke.active{display:flex;flex-direction:column;min-height:calc(100vh - 130px)}
   .thanks{flex:1;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;min-height:auto}
-  .thanks-note{padding:16px 16px 32px;max-width:44ch;font-size:12px;line-height:1.6;color:var(--ink);text-align:left;text-transform:none;font-family:var(--mono)}
+  .thanks .thanks-sub{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--ink);margin:0 auto 16px;text-transform:none}
   .star-ring{margin-left:auto;margin-right:auto}
   .danke-stars{justify-content:center}
-  .thanks-sub{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink);margin:0 auto 24px}
-  .thanks-note{margin:20px auto 0;max-width:44ch;font-size:12px;line-height:1.6;color:var(--ink);text-align:left}
+  .thanks-note{padding:16px 16px 32px;max-width:44ch;font-size:12px;line-height:1.6;color:var(--ink);text-align:left;text-transform:none;font-family:var(--mono)}
 
   /* Mono: never caps */
   .topbar,.topbar .m-r,.hl-strip .run,.steps div,
   .task .sub,.gate-box .lab,.gate-box .hint,.dim-block .dim-meta,
   .bar .prog,.btn,.toast,.consent-box .c-tag,.tag,
-  .welcome-body .so-fn,.intro-slide .so-fn,.thanks-sub,
+  .welcome-body .so-fn,.intro-slide .so-fn,
   .ms-hint,.ms-tag,.coord-label,.colorlabel-head,.den{text-transform:none}
 
   /* Mono: always black */
@@ -482,7 +481,7 @@
         <div class="danke-stars" id="dankeStars" style="margin-bottom:20px">
           <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
         </div>
-        <button class="btn" id="toProfile" style="opacity:0;transition:opacity .6s" disabled>Ergebnis anzeigen →</button>
+        <button class="btn" id="toProfile" style="display:none;opacity:0;transition:opacity .6s" disabled>Ergebnis anzeigen →</button>
       </div>
       <p class="thanks-note">Das Ergebnis basiert ausschließlich auf deinen Aufgabenergebnissen — nicht auf deinen persönlichen Angaben oder finanziellen Informationen.</p>
     </section>
@@ -733,8 +732,7 @@
     if(current==='gate'){state.participant=$('#nrInput').value.trim();$('#mNr').textContent=state.participant;show('part2');persistSession();}
     else if(current==='part2'){save(answersRecord());$('#fastFertigOverlay').classList.add('show');persistSession();}
     else if(current==='part1'){save(grunddatenRecord());buildReceipt();show('danke');persistSession();
-      const stars=$('#dankeStars');if(stars){const sp=stars.querySelectorAll('span');sp.forEach((s,i)=>setTimeout(()=>s.classList.add('lit'),i*380));}
-      setTimeout(()=>{const b=$('#toProfile');b.disabled=false;b.style.opacity='1';},2200);}
+      const stars=$('#dankeStars');if(stars){const sp=stars.querySelectorAll('span');sp.forEach((s,i)=>setTimeout(()=>{s.classList.add('lit');if(i===sp.length-1){setTimeout(()=>{stars.style.transition='opacity .35s';stars.style.opacity='0';setTimeout(()=>{stars.style.display='none';const b=$('#toProfile');b.style.display='inline-block';b.disabled=false;requestAnimationFrame(()=>requestAnimationFrame(()=>{b.style.opacity='1';}));},360);},300);}},i*380));}}
   });
 
   /* ---------- gate ---------- */
