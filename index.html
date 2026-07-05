@@ -345,8 +345,8 @@
   .q-text,.task .no,.task .q,.dim-block .dim-name{font-size:34px}
 
   #scr-danke.active{display:flex;flex-direction:column;min-height:calc(100vh - 130px)}
-  .thanks{flex:1;text-align:center;display:flex;flex-direction:column;align-items:center;padding:0 16px;min-height:auto}
-  .thanks-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .thanks{flex:1;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;min-height:auto}
+  .thanks-note{padding:16px 16px 32px;max-width:44ch;font-size:12px;line-height:1.6;color:var(--ink);text-align:left;text-transform:none;font-family:var(--mono)}
   .star-ring{margin-left:auto;margin-right:auto}
   .danke-stars{justify-content:center}
   .thanks-sub{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink);margin:0 auto 24px}
@@ -476,17 +476,15 @@
     <!-- DANKE = nach Demographics, vor Profil -->
     <section class="screen" id="scr-danke">
       <div class="thanks">
-        <div class="thanks-main">
-          <div class="star-ring" id="starRing" style="margin-bottom:20px"></div>
-          <h1>Danke</h1>
-          <p class="thanks-sub">Dein europäisches Profil wird erstellt</p>
-          <div class="danke-stars" id="dankeStars">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-          </div>
-          <button class="btn" id="toProfile" style="margin-top:24px;opacity:0;transition:opacity .6s" disabled>Ergebnis anzeigen →</button>
+        <div class="star-ring" id="starRing" style="margin-bottom:12px"></div>
+        <h1>Danke</h1>
+        <p class="thanks-sub">Dein europäisches Profil wird erstellt</p>
+        <div class="danke-stars" id="dankeStars" style="margin-bottom:20px">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
         </div>
-        <p class="thanks-note">Das Ergebnis basiert ausschließlich auf deinen Aufgabenergebnissen — nicht auf deinen persönlichen Angaben oder finanziellen Informationen.</p>
+        <button class="btn" id="toProfile" style="opacity:0;transition:opacity .6s" disabled>Ergebnis anzeigen →</button>
       </div>
+      <p class="thanks-note">Das Ergebnis basiert ausschließlich auf deinen Aufgabenergebnissen — nicht auf deinen persönlichen Angaben oder finanziellen Informationen.</p>
     </section>
 
     <!-- PART 1 = GRUNDDATEN (jetzt zweiter) -->
